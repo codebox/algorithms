@@ -8,6 +8,10 @@ Merge Sort
     Worst:      O(n log n)
 * Space:        2n
 * Stable:       Yes
+
+Notes (from https://en.wikipedia.org/wiki/Merge_sort)
+-----
+Merge sort is more efficient than quicksort for some types of lists if the data to be sorted can only be efficiently accessed sequentially, and is thus popular in languages such as Lisp, where sequentially accessed data structures are very common. Unlike some (efficient) implementations of quicksort, merge sort is a stable sort.
 '''
 def merge_sort(values):
     END_OF_LIST = object()
@@ -68,7 +72,11 @@ Selection Sort
 * Space:        n
 * Stable:       No
 
-Seems like it should be stable but: (b[1], b[2], a, c) -> (a, b[2], b[1], c) after the first cycle
+This sort seems like it should be stable but: (b[1], b[2], a, c) -> (a, b[2], b[1], c) after the first cycle
+
+Notes (from https://en.wikipedia.org/wiki/Selection_sort)
+-----
+Selection sort is noted for its simplicity, and it has performance advantages over more complicated algorithms in certain situations, particularly where auxiliary memory is limited. It generally performs worse than the similar Insertion Sort. 
 '''
 def selection_sort(values):
     def swap(i,j):
