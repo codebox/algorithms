@@ -72,9 +72,7 @@ Seems like it should be stable but: (b[1], b[2], a, c) -> (a, b[2], b[1], c) aft
 '''
 def selection_sort(values):
     def swap(i,j):
-        tmp = values[i]
-        values[i] = values[j]
-        values[j] = tmp
+        values[i], values[j] = values[j], values[i]
 
     l = len(values)
 
@@ -91,3 +89,27 @@ def selection_sort(values):
 
     return values
 
+'''
+--------------
+Insertion Sort
+--------------
+* Performance:
+    Best:       O(n)
+    Average:    O(n^2)
+    Worst:      O(n^2)
+* Space:        n
+* Stable:       Yes
+
+Notes (from https://en.wikipedia.org/wiki/Insertion_sort)
+-----
+Insertion sort is one of the fastest algorithms for sorting very small arrays, even faster than quicksort; indeed, good quicksort implementations use insertion sort for arrays smaller than a certain threshold, also when arising as subproblems; the exact threshold must be determined experimentally and depends on the machine, but is commonly around ten.
+'''
+def insertion_sort(values):
+    l = len(values)
+    for i in range(1, l): 
+        j = i - 1 # j is the index of largest sorted element
+        while j >= 0 and values[i] < values[j]:
+            j -= 1
+        values.insert(j+1, values.pop(i))
+
+    return values
