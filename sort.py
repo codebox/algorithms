@@ -15,6 +15,8 @@ Merge Sort is more efficient than Quick Sort for some types of lists if the data
 be efficiently accessed sequentially, and is thus popular in languages such as Lisp, where sequentially 
 accessed data structures are very common. Unlike some (efficient) implementations of Quick Sort, 
 Merge Sort is a stable sort.
+
+Summary: recursive, keep splitting the list into 2 halves, sort each half then merge them back together.
 '''
 def merge_sort(values):
     END_OF_LIST = object()
@@ -82,11 +84,10 @@ Notes (from https://en.wikipedia.org/wiki/Selection_sort)
 Selection Sort is noted for its simplicity, and it has performance advantages over more complicated algorithms 
 in certain situations, particularly where auxiliary memory is limited. It generally performs worse than the 
 similar Insertion Sort. 
+
+Summary: step through all unsorted items, find the smallest one, swap it with the left-most item and repeat
 '''
 def selection_sort(values):
-    def swap(i,j):
-        values[i], values[j] = values[j], values[i]
-
     l = len(values)
 
     for s in range(l):
@@ -98,7 +99,7 @@ def selection_sort(values):
                 smallest = next_value
                 i_smallest = i
 
-        swap(s,i_smallest)
+        s, i_smallest = i_smallest, s
 
     return values
 
@@ -119,6 +120,8 @@ Insertion Sort is one of the fastest algorithms for sorting very small arrays, e
 indeed, good Quick Sort implementations use Insertion Sort for arrays smaller than a certain threshold, also 
 when arising as subproblems; the exact threshold must be determined experimentally and depends on the machine, 
 but is commonly around ten.
+
+Summary: step through the unsorted items, insert each one at the correct place within the sorted part of the list
 '''
 def insertion_sort(values):
     l = len(values)
@@ -148,6 +151,8 @@ Therefore, Bubble Sort is not a practical sorting algorithm when n is large. The
 Bubble Sort has over most other implementations, even Quick Sort (but not Insertion Sort), is that the ability 
 to detect that the list is sorted is efficiently built into the algorithm. When the list is already sorted 
 (best-case), the complexity of Bubble Sort is only O(n).
+
+Summary: compare adjacent pairs of items, swap if they are in the wrong order, keep repeating for unsorted part of list
 '''
 def bubble_sort(values):
     l = len(values)
