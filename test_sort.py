@@ -22,5 +22,8 @@ class TestSort(unittest.TestCase):
     def test_insertion_sort(self):
         self.run_sort_tests(sort.insertion_sort)
 
+    def test_bubble_sort(self):
+        self.run_sort_tests(sort.bubble_sort)
+
 if __name__ == '__main__':
     unittest.main()

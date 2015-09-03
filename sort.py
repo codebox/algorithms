@@ -11,7 +11,10 @@ Merge Sort
 
 Notes (from https://en.wikipedia.org/wiki/Merge_sort)
 -----
-Merge sort is more efficient than quicksort for some types of lists if the data to be sorted can only be efficiently accessed sequentially, and is thus popular in languages such as Lisp, where sequentially accessed data structures are very common. Unlike some (efficient) implementations of quicksort, merge sort is a stable sort.
+Merge Sort is more efficient than Quick Sort for some types of lists if the data to be sorted can only 
+be efficiently accessed sequentially, and is thus popular in languages such as Lisp, where sequentially 
+accessed data structures are very common. Unlike some (efficient) implementations of Quick Sort, 
+Merge Sort is a stable sort.
 '''
 def merge_sort(values):
     END_OF_LIST = object()
@@ -76,7 +79,9 @@ This sort seems like it should be stable but: (b[1], b[2], a, c) -> (a, b[2], b[
 
 Notes (from https://en.wikipedia.org/wiki/Selection_sort)
 -----
-Selection sort is noted for its simplicity, and it has performance advantages over more complicated algorithms in certain situations, particularly where auxiliary memory is limited. It generally performs worse than the similar Insertion Sort. 
+Selection Sort is noted for its simplicity, and it has performance advantages over more complicated algorithms 
+in certain situations, particularly where auxiliary memory is limited. It generally performs worse than the 
+similar Insertion Sort. 
 '''
 def selection_sort(values):
     def swap(i,j):
@@ -110,7 +115,10 @@ Insertion Sort
 
 Notes (from https://en.wikipedia.org/wiki/Insertion_sort)
 -----
-Insertion sort is one of the fastest algorithms for sorting very small arrays, even faster than quicksort; indeed, good quicksort implementations use insertion sort for arrays smaller than a certain threshold, also when arising as subproblems; the exact threshold must be determined experimentally and depends on the machine, but is commonly around ten.
+Insertion Sort is one of the fastest algorithms for sorting very small arrays, even faster than Quick Sort; 
+indeed, good Quick Sort implementations use Insertion Sort for arrays smaller than a certain threshold, also 
+when arising as subproblems; the exact threshold must be determined experimentally and depends on the machine, 
+but is commonly around ten.
 '''
 def insertion_sort(values):
     l = len(values)
@@ -119,5 +127,34 @@ def insertion_sort(values):
         while j >= 0 and values[i] < values[j]:
             j -= 1
         values.insert(j+1, values.pop(i))
+
+    return values
+
+'''
+-----------
+Bubble Sort
+-----------
+* Performance:
+    Best:       O(n)
+    Average:    O(n^2)
+    Worst:      O(n^2)
+* Space:        n
+* Stable:       Yes
+
+Notes (from https://en.wikipedia.org/wiki/Bubble_sort)
+-----
+Even other О(n^2) sorting algorithms, such as Insertion Sort, tend to have better performance than Bubble Sort. 
+Therefore, Bubble Sort is not a practical sorting algorithm when n is large. The only significant advantage that 
+Bubble Sort has over most other implementations, even Quick Sort (but not Insertion Sort), is that the ability 
+to detect that the list is sorted is efficiently built into the algorithm. When the list is already sorted 
+(best-case), the complexity of Bubble Sort is only O(n).
+'''
+def bubble_sort(values):
+    l = len(values)
+
+    for i in range(l): 
+        for j in range(i+1, l):
+            if values[i] > values[j]:
+                values[i], values[j] = values[j], values[i]
 
     return values
