@@ -99,7 +99,7 @@ def selection_sort(values):
                 smallest = next_value
                 i_smallest = i
 
-        s, i_smallest = i_smallest, s
+        values[s], values[i_smallest] = values[i_smallest], values[s]
 
     return values
 
@@ -146,9 +146,9 @@ Bubble Sort
 
 Notes (from https://en.wikipedia.org/wiki/Bubble_sort)
 -----
-Even other О(n^2) sorting algorithms, such as Insertion Sort, tend to have better performance than Bubble Sort. 
-Therefore, Bubble Sort is not a practical sorting algorithm when n is large. The only significant advantage that 
-Bubble Sort has over most other implementations, even Quick Sort (but not Insertion Sort), is that the ability 
+Even other O(n^2) sorting algorithms, such as Insertion Sort, tend to have better performance than Bubble Sort.
+Therefore, Bubble Sort is not a practical sorting algorithm when n is large. The only significant advantage that
+Bubble Sort has over most other implementations, even Quick Sort (but not Insertion Sort), is that the ability
 to detect that the list is sorted is efficiently built into the algorithm. When the list is already sorted 
 (best-case), the complexity of Bubble Sort is only O(n).
 
@@ -163,3 +163,42 @@ def bubble_sort(values):
                 values[i], values[j] = values[j], values[i]
 
     return values
+
+'''
+-----------
+Quick Sort
+-----------
+* Performance:
+    Best:       O(n log n)
+    Average:    O(n log n)
+    Worst:      O(n^2)
+* Space:        n
+* Stable:       No
+
+Notes
+-----
+
+'''
+def quick_sort(values):
+    def partition(values):
+        pivot_value = values[0]
+        i_last_smaller = 0
+
+        for i in range(1, len(values)):
+            if values[i] <= pivot_value:
+                values[i], values[i_last_smaller + 1] = values[i_last_smaller + 1], values[i]
+                i_last_smaller += 1
+
+        return values[0:1], values[1:i_last_smaller+1], values[i_last_smaller+1:]
+
+    def sort(values):
+        l = len(values)
+
+        if l < 2:
+            return values
+
+        pivot, smaller, larger = partition(values)
+
+        return sort(smaller) + pivot + sort(larger)
+
+    return sort(values)
