@@ -1,3 +1,5 @@
+import random
+
 '''
 ----------
 Merge Sort
@@ -181,6 +183,9 @@ Notes
 '''
 def quick_sort(values):
     def partition(values):
+        i_pivot = random.randint(0, len(values) - 1)
+
+        values[0], values[i_pivot] = values[i_pivot], values[0]
         pivot_value = values[0]
         i_last_smaller = 0
 
