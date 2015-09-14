@@ -2,7 +2,8 @@ from Queue import Queue
 
 def breadth_first_search(graph, start_node_id):
     start_node = graph.get_node(start_node_id)
-    start_node.visited = True
+    start_node.visited = 1
+    visit_index = 2
 
     q = Queue()
     q.put(start_node)
@@ -11,7 +12,8 @@ def breadth_first_search(graph, start_node_id):
         node = q.get()
         for neighbour in node.neighbours:
             if not neighbour.visited:
-                neighbour.visited = True
+                neighbour.visited = visit_index
+                visit_index += 1
                 q.put(neighbour)
 
 def connected_components(graph):
@@ -22,6 +24,20 @@ def connected_components(graph):
             result.append(node)
             breadth_first_search(graph, node.id)
     return result
+
+def depth_first_search(graph, start_node_id):
+    def search(graph, node_id):
+        node = graph.get_node(node_id)
+        node.visited = search.visit_index
+        search.visit_index += 1
+        for neighbour in node.neighbours:
+            if not neighbour.visited:
+                search(graph, neighbour.id)
+
+    search.visit_index = 1
+
+    return search(graph, start_node_id)
+
 
 class Node:
     def __init__(self, id):
