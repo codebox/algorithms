@@ -66,13 +66,13 @@ class Graph:
         return len(self.nodes)
 
     def get_node_ids(self):
-        return self.nodes.keys()
+        return self.nodes.keys()[:]
 
     def get_nodes(self):
-        return self.nodes.values()
+        return self.nodes.values()[:]
 
     def get_node(self, id):
         return self.nodes[id]
 
     def get_outgoing(self, from_id):
-        return self.nodes[from_id].neighbours
+        return self.nodes[from_id].neighbours[:]
