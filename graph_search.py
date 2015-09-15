@@ -42,11 +42,12 @@ def depth_first_search(graph, start_node_id):
 class Node:
     def __init__(self, id):
         self.id = id
+        self.label = None
         self.visited = False
         self.neighbours = [] 
 
 class Graph:
-    def __init__(self, l):
+    def __init__(self, l, is_directed=False):
         self.nodes = {}
 
         def add_node_if_required(id):
@@ -58,10 +59,17 @@ class Graph:
             node1 = add_node_if_required(e[0])
             node2 = add_node_if_required(e[1])
             node1.neighbours.append(node2)
-            node2.neighbours.append(node1)
+            if not is_directed:
+                node2.neighbours.append(node1)
+
+    def get_node_count(self):
+        return len(self.nodes)
 
     def get_node_ids(self):
         return self.nodes.keys()
+
+    def get_nodes(self):
+        return self.nodes.values()
 
     def get_node(self, id):
         return self.nodes[id]
