@@ -1,5 +1,8 @@
 from graph_search import Graph
 
+'''
+Implementation of Kosaraju's two-pass algorithm, which finds strongly connected components within a directed graph.
+'''
 t = 0
 s = None
 class GraphWithTS(Graph):
