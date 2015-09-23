@@ -1,3 +1,9 @@
+'''
+Dijkstra's Shortest Path algorithm (naive implementation)
+----------------------------------
+Given a graph and starting node, computes the shortest path/distance from the start node to each node in the graph.
+This implementation runs in O(nm) time, can be improved to O(m log n) by using a heap to store unexplored nodes
+'''
 def find_shortest_path_basic(graph, start_node_id):
     start_node = graph.get_node(start_node_id)
     explored = set([start_node])
