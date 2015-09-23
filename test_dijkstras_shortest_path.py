@@ -1,7 +1,7 @@
 import unittest
 from dijkstras_shortest_path import Graph, find_shortest_path_basic
 
-class TestArrayInversions(unittest.TestCase):
+class TestDijkstrasShortestPath(unittest.TestCase):
 
     def test_simple(self):
         g=Graph([[0,1,1], [1,2,1], [2,3,1], [3,4,1]])
