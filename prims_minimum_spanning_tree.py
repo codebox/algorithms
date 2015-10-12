@@ -1,5 +1,5 @@
 '''
-Prims's Minimum Spanning Tree
+Prim's Minimum Spanning Tree
 -----------------------------
 Computes the minimum spanning tree of a connected, undirected graph
 '''
