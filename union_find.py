@@ -26,5 +26,5 @@ class UnionFind:
         for item in self.leader_to_group[leader_of_smaller_group]:
             self.item_to_leader[item] = leader_of_larger_group
 
-        self.leader_to_group[leader_of_larger_group].append(self.leader_to_group[leader_of_smaller_group])
+        self.leader_to_group[leader_of_larger_group] += self.leader_to_group[leader_of_smaller_group]
         del self.leader_to_group[leader_of_smaller_group]
